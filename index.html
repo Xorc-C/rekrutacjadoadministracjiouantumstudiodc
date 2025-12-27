@@ -13,12 +13,12 @@ body {
 }
 
 h1 {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 .form-group {
     margin-bottom: 25px;
-    max-width: 700px;
+    max-width: 800px;
 }
 
 label {
@@ -43,7 +43,7 @@ textarea {
 
 .radio-group label {
     font-weight: normal;
-    margin-right: 15px;
+    margin-right: 20px;
 }
 
 button {
@@ -67,49 +67,112 @@ button:hover {
 
 <form id="rekrutacjaForm">
 
+<!-- 1 -->
 <div class="form-group">
 <label>Nick Discord</label>
 <input type="text" id="nick" required>
 </div>
 
+<!-- 2 -->
 <div class="form-group">
 <label>Wiek (min. 13)</label>
 <input type="number" id="wiek" required>
 </div>
 
+<!-- 3 -->
 <div class="form-group">
-<label>Czy spełniasz wszystkie warunki?</label>
+<label>Czy spełniasz wszystkie warunki potrzebne do złożenia podania?</label>
 <div class="radio-group">
 <label><input type="radio" name="warunki" value="Tak" checked> Tak</label>
 <label><input type="radio" name="warunki" value="Nie"> Nie</label>
 </div>
 </div>
 
+<!-- 4 -->
 <div class="form-group">
-<label>Opowiedz coś o sobie (min. 50 słów)</label>
+<label>Opowiedz nam coś o sobie (min. 50 słów)</label>
 <textarea id="oSobie" rows="6" required></textarea>
 </div>
 
+<!-- 5 -->
 <div class="form-group">
-<label>Czym się wyróżniasz?</label>
-<textarea id="wyróżnienie" rows="3"></textarea>
+<label>Czym byś się wyróżniał/a na serwerze? (ok. 20 słów)</label>
+<textarea id="wyroznienie" rows="4"></textarea>
 </div>
 
+<!-- 6 -->
 <div class="form-group">
-<label>Czy masz sprawny mikrofon?</label>
+<label>Czy posiadasz sprawny mikrofon?</label>
 <div class="radio-group">
 <label><input type="radio" name="mikrofon" value="Tak" checked> Tak</label>
 <label><input type="radio" name="mikrofon" value="Nie"> Nie</label>
 </div>
 </div>
 
+<!-- 7 -->
 <div class="form-group">
-<label>Dlaczego Ty nadajesz się na to stanowisko? (min. 40 słów)</label>
+<label>Dlaczego akurat Ty nadajesz się na to stanowisko? (min. 40 słów)</label>
 <textarea id="dlaczego" rows="6" required></textarea>
 </div>
 
-<button type="submit">Wyślij podanie</button>
+<!-- 8 -->
+<div class="form-group">
+<label>Jak oceniasz swoją znajomość regulaminu (0–10)?</label>
+<div class="radio-group">
+<label><input type="radio" name="regulamin" value="0">0</label>
+<label><input type="radio" name="regulamin" value="1">1</label>
+<label><input type="radio" name="regulamin" value="2">2</label>
+<label><input type="radio" name="regulamin" value="3">3</label>
+<label><input type="radio" name="regulamin" value="4">4</label>
+<label><input type="radio" name="regulamin" value="5" checked>5</label>
+<label><input type="radio" name="regulamin" value="6">6</label>
+<label><input type="radio" name="regulamin" value="7">7</label>
+<label><input type="radio" name="regulamin" value="8">8</label>
+<label><input type="radio" name="regulamin" value="9">9</label>
+<label><input type="radio" name="regulamin" value="10">10</label>
+</div>
+</div>
 
+<!-- 9 -->
+<div class="form-group">
+<label>Czy byłeś kiedykolwiek karany na naszym serwerze?</label>
+<div class="radio-group">
+<label><input type="radio" name="kara" value="Tak"> Tak</label>
+<label><input type="radio" name="kara" value="Nie" checked> Nie</label>
+</div>
+</div>
+
+<!-- 10 -->
+<div class="form-group">
+<label>Czy możesz traktować swojego kolegę inaczej niż innych graczy?</label>
+<textarea id="kolega" rows="4"></textarea>
+</div>
+
+<!-- 11 -->
+<div class="form-group">
+<label>Jak zachowasz się, gdy gracz będzie negatywnie wypowiadał się o serwerze?</label>
+<textarea id="negatywne" rows="4"></textarea>
+</div>
+
+<!-- 12 -->
+<div class="form-group">
+<label>Co zrobisz, gdy nie będziesz wiedział jak postąpić z graczem?</label>
+<textarea id="nieWiem" rows="4"></textarea>
+</div>
+
+<!-- 13 -->
+<div class="form-group">
+<label>Co zrobisz, gdy gracz będzie Cię prowokował?</label>
+<textarea id="prowokacja" rows="4"></textarea>
+</div>
+
+<!-- 14 -->
+<div class="form-group">
+<label>Czy pełniłeś podobną funkcję na innych serwerach? (opcjonalne)</label>
+<textarea id="inne" rows="4"></textarea>
+</div>
+
+<button type="submit">Wyślij podanie</button>
 </form>
 
 <script>
@@ -146,9 +209,16 @@ document.getElementById("rekrutacjaForm").addEventListener("submit", async (e) =
         wiek,
         warunki: getRadio("warunki"),
         mikrofon: getRadio("mikrofon"),
+        regulamin: getRadio("regulamin"),
+        kara: getRadio("kara"),
         oSobie,
         dlaczego,
-        wyróżnienie: document.getElementById("wyróżnienie").value
+        wyroznienie: document.getElementById("wyroznienie").value,
+        kolega: document.getElementById("kolega").value,
+        negatywne: document.getElementById("negatywne").value,
+        nieWiem: document.getElementById("nieWiem").value,
+        prowokacja: document.getElementById("prowokacja").value,
+        inne: document.getElementById("inne").value
     };
 
     try {
@@ -162,13 +232,14 @@ document.getElementById("rekrutacjaForm").addEventListener("submit", async (e) =
         alert("✅ Podanie wysłane!");
         e.target.reset();
     } catch {
-        alert("❌ Błąd wysyłania.");
+        alert("❌ Błąd wysyłania formularza.");
     }
 });
 </script>
 
 </body>
 </html>
+
 
 
 
