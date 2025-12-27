@@ -1,219 +1,120 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<title>Rekrutacja – Quantum Studio</title>
-
-<style>
-body {
-    background: #0f0f0f;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    padding: 30px;
-}
-
-h1 {
-    margin-bottom: 30px;
-}
-
-.form-group {
-    margin-bottom: 25px;
-    max-width: 800px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="number"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    background: #1e1e1e;
-    border: 1px solid #333;
-    color: #fff;
-}
-
-textarea {
-    resize: vertical;
-}
-
-.radio-group label {
-    font-weight: normal;
-    margin-right: 20px;
-}
-
-button {
-    background: #5865F2;
-    color: white;
-    border: none;
-    padding: 14px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #4752c4;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Rekrutacja do Administracji Quantum Studio (DC)</title>
+    <style>
+        body {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            max-width: 800px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .info {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #cccccc;
+        }
+    </style>
 </head>
-
 <body>
 
 <h1>Rekrutacja do Administracji Quantum Studio (DC)</h1>
 
 <form id="rekrutacjaForm">
 
-<!-- 1 -->
-<div class="form-group">
-<label>Nick Discord</label>
-<input type="text" id="nick" required>
-</div>
+    <p><strong>Napisz swój nick:</strong></p>
+    <textarea id="nick" rows="2"></textarea>
 
-<!-- 2 -->
-<div class="form-group">
-<label>Wiek (min. 13)</label>
-<input type="number" id="wiek" required>
-</div>
+    <p><strong>Ile masz lat? (min. 13)</strong></p>
+    <textarea id="wiek" rows="2"></textarea>
 
-<!-- 3 -->
-<div class="form-group">
-<label>Czy spełniasz wszystkie warunki potrzebne do złożenia podania?</label>
-<div class="radio-group">
-<label><input type="radio" name="warunki" value="Tak" checked> Tak</label>
-<label><input type="radio" name="warunki" value="Nie"> Nie</label>
-</div>
-</div>
+    <p><strong>Czy spełniasz wszystkie warunki?</strong></p>
+    <input type="radio" name="warunki" value="Tak" checked> Tak
+    <input type="radio" name="warunki" value="Nie"> Nie
 
-<!-- 4 -->
-<div class="form-group">
-<label>Opowiedz nam coś o sobie (min. 50 słów)</label>
-<textarea id="oSobie" rows="6" required></textarea>
-</div>
+    <p><strong>Opowiedz coś o sobie (min. 50 słów)</strong></p>
+    <textarea id="oSobie" rows="5"></textarea>
 
-<!-- 5 -->
-<div class="form-group">
-<label>Czym byś się wyróżniał/a na serwerze? (ok. 20 słów)</label>
-<textarea id="wyroznienie" rows="4"></textarea>
-</div>
+    <p><strong>Czym się wyróżniasz?</strong></p>
+    <textarea id="wyroznienie" rows="3"></textarea>
 
-<!-- 6 -->
-<div class="form-group">
-<label>Czy posiadasz sprawny mikrofon?</label>
-<div class="radio-group">
-<label><input type="radio" name="mikrofon" value="Tak" checked> Tak</label>
-<label><input type="radio" name="mikrofon" value="Nie"> Nie</label>
-</div>
-</div>
+    <p><strong>Czy masz sprawny mikrofon?</strong></p>
+    <input type="radio" name="mikrofon" value="Tak" checked> Tak
+    <input type="radio" name="mikrofon" value="Nie"> Nie
 
-<!-- 7 -->
-<div class="form-group">
-<label>Dlaczego akurat Ty nadajesz się na to stanowisko? (min. 40 słów)</label>
-<textarea id="dlaczego" rows="6" required></textarea>
-</div>
+    <p><strong>Dlaczego Ty nadajesz się na to stanowisko? (min. 40 słów)</strong></p>
+    <textarea id="dlaczego" rows="5"></textarea>
 
-<!-- 8 -->
-<div class="form-group">
-<label>Jak oceniasz swoją znajomość regulaminu (0–10)?</label>
-<div class="radio-group">
-<label><input type="radio" name="regulamin" value="0">0</label>
-<label><input type="radio" name="regulamin" value="1">1</label>
-<label><input type="radio" name="regulamin" value="2">2</label>
-<label><input type="radio" name="regulamin" value="3">3</label>
-<label><input type="radio" name="regulamin" value="4">4</label>
-<label><input type="radio" name="regulamin" value="5" checked>5</label>
-<label><input type="radio" name="regulamin" value="6">6</label>
-<label><input type="radio" name="regulamin" value="7">7</label>
-<label><input type="radio" name="regulamin" value="8">8</label>
-<label><input type="radio" name="regulamin" value="9">9</label>
-<label><input type="radio" name="regulamin" value="10">10</label>
-</div>
-</div>
+    <p><strong>Jak oceniasz znajomość regulaminu (0–10)?</strong></p>
+    <input type="radio" name="regulamin" value="0">0
+    <input type="radio" name="regulamin" value="1">1
+    <input type="radio" name="regulamin" value="2">2
+    <input type="radio" name="regulamin" value="3">3
+    <input type="radio" name="regulamin" value="4">4
+    <input type="radio" name="regulamin" value="5">5
+    <input type="radio" name="regulamin" value="6">6
+    <input type="radio" name="regulamin" value="7">7
+    <input type="radio" name="regulamin" value="8">8
+    <input type="radio" name="regulamin" value="9">9
+    <input type="radio" name="regulamin" value="10">10
 
-<!-- 9 -->
-<div class="form-group">
-<label>Czy byłeś kiedykolwiek karany na naszym serwerze?</label>
-<div class="radio-group">
-<label><input type="radio" name="kara" value="Tak"> Tak</label>
-<label><input type="radio" name="kara" value="Nie" checked> Nie</label>
-</div>
-</div>
+    <p><strong>Czy byłeś karany na serwerze?</strong></p>
+    <input type="radio" name="kara" value="Tak"> Tak
+    <input type="radio" name="kara" value="Nie" checked> Nie
 
-<!-- 10 -->
-<div class="form-group">
-<label>Czy możesz traktować swojego kolegę inaczej niż innych graczy?</label>
-<textarea id="kolega" rows="4"></textarea>
-</div>
+    <p><strong>Czy możesz traktować kolegę tak samo jak innych graczy?</strong></p>
+    <textarea id="kolega" rows="3"></textarea>
 
-<!-- 11 -->
-<div class="form-group">
-<label>Jak zachowasz się, gdy gracz będzie negatywnie wypowiadał się o serwerze?</label>
-<textarea id="negatywne" rows="4"></textarea>
-</div>
+    <p><strong>Jak zareagujesz na negatywne wypowiedzi o serwerze?</strong></p>
+    <textarea id="negatywne" rows="3"></textarea>
 
-<!-- 12 -->
-<div class="form-group">
-<label>Co zrobisz, gdy nie będziesz wiedział jak postąpić z graczem?</label>
-<textarea id="nieWiem" rows="4"></textarea>
-</div>
+    <p><strong>Co zrobisz, gdy nie będziesz wiedział jak postąpić?</strong></p>
+    <textarea id="nieWiem" rows="3"></textarea>
 
-<!-- 13 -->
-<div class="form-group">
-<label>Co zrobisz, gdy gracz będzie Cię prowokował?</label>
-<textarea id="prowokacja" rows="4"></textarea>
-</div>
+    <p><strong>Co zrobisz, gdy gracz będzie Cię prowokował?</strong></p>
+    <textarea id="prowokacja" rows="3"></textarea>
 
-<!-- 14 -->
-<div class="form-group">
-<label>Czy pełniłeś podobną funkcję na innych serwerach? (opcjonalne)</label>
-<textarea id="inne" rows="4"></textarea>
-</div>
+    <p><strong>Czy pełniłeś podobną funkcję na innych serwerach? (opcjonalne)</strong></p>
+    <textarea id="inne" rows="4"></textarea>
 
-<button type="submit">Wyślij podanie</button>
+    <!-- 🔹 DODANY TEKST -->
+    <p class="info">
+        Widzimy się na rekrutacji głosowej!<br>
+        Jeżeli przyjmiemy cię, zgłoś się na ticket i dogadaj się kiedy taka rekrutacja będzie robiona!
+    </p>
+
+    <button type="submit">Wyślij odpowiedzi</button>
+
 </form>
 
 <script>
-const apiURL = "TU_WKLEJ_URL_WORKERA";
+const apiURL = "https://gentle-night-cb86.tyxxnombodi.workers.dev/";
 
-document.getElementById("rekrutacjaForm").addEventListener("submit", async (e) => {
+document.getElementById("rekrutacjaForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
-    const getRadio = (name) =>
-        document.querySelector(`input[name="${name}"]:checked`)?.value || "Brak";
-
-    const nick = document.getElementById("nick").value.trim();
-    const wiek = parseInt(document.getElementById("wiek").value);
-    const oSobie = document.getElementById("oSobie").value.trim();
-    const dlaczego = document.getElementById("dlaczego").value.trim();
-
-    if (wiek < 13) {
-        alert("Musisz mieć co najmniej 13 lat.");
-        return;
-    }
-
-    if (oSobie.split(" ").length < 50) {
-        alert("Opis o sobie musi mieć minimum 50 słów.");
-        return;
-    }
-
-    if (dlaczego.split(" ").length < 40) {
-        alert("Uzasadnienie musi mieć minimum 40 słów.");
-        return;
-    }
-
-    const payload = {
-        nick,
-        wiek,
-        warunki: getRadio("warunki"),
-        mikrofon: getRadio("mikrofon"),
-        regulamin: getRadio("regulamin"),
-        kara: getRadio("kara"),
-        oSobie,
-        dlaczego,
+    const data = {
+        nick: document.getElementById("nick").value,
+        wiek: document.getElementById("wiek").value,
+        warunki: document.querySelector('input[name="warunki"]:checked').value,
+        oSobie: document.getElementById("oSobie").value,
         wyroznienie: document.getElementById("wyroznienie").value,
+        mikrofon: document.querySelector('input[name="mikrofon"]:checked').value,
+        dlaczego: document.getElementById("dlaczego").value,
+        regulamin: document.querySelector('input[name="regulamin"]:checked').value,
+        kara: document.querySelector('input[name="kara"]:checked').value,
         kolega: document.getElementById("kolega").value,
         negatywne: document.getElementById("negatywne").value,
         nieWiem: document.getElementById("nieWiem").value,
@@ -221,25 +122,23 @@ document.getElementById("rekrutacjaForm").addEventListener("submit", async (e) =
         inne: document.getElementById("inne").value
     };
 
-    try {
-        const res = await fetch(apiURL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-        });
+    const res = await fetch(apiURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
 
-        if (!res.ok) throw new Error();
-        alert("✅ Podanie wysłane!");
-        e.target.reset();
-    } catch {
-        alert("❌ Błąd wysyłania formularza.");
+    if (res.ok) {
+        alert("Formularz wysłany! Powodzenia 👋");
+        this.reset();
+    } else {
+        alert("Błąd wysyłania formularza");
     }
 });
 </script>
 
 </body>
 </html>
-
 
 
 
