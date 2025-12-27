@@ -1,89 +1,119 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Rekrutacja do Administracji Quantum Studio (DC)</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: #eee;
-            padding: 20px;
-        }
-        textarea, input, button {
-            width: 100%;
-            max-width: 700px;
-            padding: 8px;
-            margin-top: 5px;
-        }
-        button {
-            background: #5865F2;
-            color: white;
-            border: none;
-            padding: 12px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #4752c4;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Rekrutacja – Quantum Studio</title>
+
+<style>
+body {
+    background: #0f0f0f;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    padding: 30px;
+}
+
+h1 {
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    max-width: 700px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    color: #fff;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.radio-group label {
+    font-weight: normal;
+    margin-right: 15px;
+}
+
+button {
+    background: #5865F2;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #4752c4;
+}
+</style>
 </head>
+
 <body>
 
 <h1>Rekrutacja do Administracji Quantum Studio (DC)</h1>
 
 <form id="rekrutacjaForm">
 
-    <p><strong>Napisz swój nick:</strong></p>
-    <textarea id="nick" required></textarea>
+<div class="form-group">
+<label>Nick Discord</label>
+<input type="text" id="nick" required>
+</div>
 
-    <p><strong>Ile masz lat? (min. 13)</strong></p>
-    <textarea id="wiek" required></textarea>
+<div class="form-group">
+<label>Wiek (min. 13)</label>
+<input type="number" id="wiek" required>
+</div>
 
-    <p><strong>Czy spełniasz wszystkie warunki?</strong></p>
-    <input type="radio" name="warunki" value="Tak" checked> Tak<br>
-    <input type="radio" name="warunki" value="Nie"> Nie
+<div class="form-group">
+<label>Czy spełniasz wszystkie warunki?</label>
+<div class="radio-group">
+<label><input type="radio" name="warunki" value="Tak" checked> Tak</label>
+<label><input type="radio" name="warunki" value="Nie"> Nie</label>
+</div>
+</div>
 
-    <p><strong>Opowiedz coś o sobie (min. 50 słów)</strong></p>
-    <textarea id="oSobie" rows="6" required></textarea>
+<div class="form-group">
+<label>Opowiedz coś o sobie (min. 50 słów)</label>
+<textarea id="oSobie" rows="6" required></textarea>
+</div>
 
-    <p><strong>Czym się wyróżniasz?</strong></p>
-    <textarea id="wyróżnienie"></textarea>
+<div class="form-group">
+<label>Czym się wyróżniasz?</label>
+<textarea id="wyróżnienie" rows="3"></textarea>
+</div>
 
-    <p><strong>Czy masz sprawny mikrofon?</strong></p>
-    <input type="radio" name="mikrofon" value="Tak" checked> Tak<br>
-    <input type="radio" name="mikrofon" value="Nie"> Nie
+<div class="form-group">
+<label>Czy masz sprawny mikrofon?</label>
+<div class="radio-group">
+<label><input type="radio" name="mikrofon" value="Tak" checked> Tak</label>
+<label><input type="radio" name="mikrofon" value="Nie"> Nie</label>
+</div>
+</div>
 
-    <p><strong>Dlaczego Ty nadajesz się na to stanowisko? (min. 40 słów)</strong></p>
-    <textarea id="dlaczego" rows="6" required></textarea>
+<div class="form-group">
+<label>Dlaczego Ty nadajesz się na to stanowisko? (min. 40 słów)</label>
+<textarea id="dlaczego" rows="6" required></textarea>
+</div>
 
-    <p><strong>Znajomość regulaminu (0–10)</strong></p>
-    <input type="radio" name="regulamin" value="0">0
-    <input type="radio" name="regulamin" value="1">1
-    <input type="radio" name="regulamin" value="2">2
-    <input type="radio" name="regulamin" value="3">3
-    <input type="radio" name="regulamin" value="4">4
-    <input type="radio" name="regulamin" value="5" checked>5
-    <input type="radio" name="regulamin" value="6">6
-    <input type="radio" name="regulamin" value="7">7
-    <input type="radio" name="regulamin" value="8">8
-    <input type="radio" name="regulamin" value="9">9
-    <input type="radio" name="regulamin" value="10">10
+<button type="submit">Wyślij podanie</button>
 
-    <p><strong>Czy byłeś karany?</strong></p>
-    <input type="radio" name="kara" value="Tak"> Tak<br>
-    <input type="radio" name="kara" value="Nie" checked> Nie
-
-    <p><strong>Czy pełniłeś podobną funkcję na innych serwerach?</strong></p>
-    <textarea id="inne"></textarea>
-
-    <br><br>
-    <button type="submit">Wyślij podanie</button>
 </form>
 
 <script>
-const webhookURL = "TU_WKLEJ_NOWY_WEBHOOK";
+const apiURL = "TU_WKLEJ_URL_WORKERA";
 
 document.getElementById("rekrutacjaForm").addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -92,7 +122,7 @@ document.getElementById("rekrutacjaForm").addEventListener("submit", async (e) =
         document.querySelector(`input[name="${name}"]:checked`)?.value || "Brak";
 
     const nick = document.getElementById("nick").value.trim();
-    const wiek = parseInt(document.getElementById("wiek").value.trim());
+    const wiek = parseInt(document.getElementById("wiek").value);
     const oSobie = document.getElementById("oSobie").value.trim();
     const dlaczego = document.getElementById("dlaczego").value.trim();
 
@@ -112,28 +142,17 @@ document.getElementById("rekrutacjaForm").addEventListener("submit", async (e) =
     }
 
     const payload = {
-        username: "📥 Rekrutacja Quantum Studio",
-        embeds: [{
-            title: "Nowe zgłoszenie",
-            color: 7506394,
-            fields: [
-                { name: "Nick", value: nick, inline: true },
-                { name: "Wiek", value: wiek.toString(), inline: true },
-                { name: "Warunki", value: getRadio("warunki"), inline: true },
-                { name: "Mikrofon", value: getRadio("mikrofon"), inline: true },
-                { name: "Regulamin", value: getRadio("regulamin"), inline: true },
-                { name: "Karany", value: getRadio("kara"), inline: true },
-                { name: "O sobie", value: oSobie },
-                { name: "Dlaczego on/ona?", value: dlaczego },
-                { name: "Wyróżnienie", value: document.getElementById("wyróżnienie").value || "-" },
-                { name: "Inne serwery", value: document.getElementById("inne").value || "-" }
-            ],
-            timestamp: new Date()
-        }]
+        nick,
+        wiek,
+        warunki: getRadio("warunki"),
+        mikrofon: getRadio("mikrofon"),
+        oSobie,
+        dlaczego,
+        wyróżnienie: document.getElementById("wyróżnienie").value
     };
 
     try {
-        const res = await fetch(webhookURL, {
+        const res = await fetch(apiURL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
@@ -143,13 +162,14 @@ document.getElementById("rekrutacjaForm").addEventListener("submit", async (e) =
         alert("✅ Podanie wysłane!");
         e.target.reset();
     } catch {
-        alert("❌ Błąd wysyłania formularza.");
+        alert("❌ Błąd wysyłania.");
     }
 });
 </script>
 
 </body>
 </html>
+
 
 
 
