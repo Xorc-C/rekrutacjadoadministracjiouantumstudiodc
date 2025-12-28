@@ -33,7 +33,6 @@
 <h1>Rekrutacja do Administracji Quantum Studio (DC)</h1>
 
 <form id="rekrutacjaForm">
-
     <p><strong>Napisz swój nick:</strong></p>
     <textarea id="nick" rows="2"></textarea>
 
@@ -89,14 +88,12 @@
     <p><strong>Czy pełniłeś podobną funkcję na innych serwerach? (opcjonalne)</strong></p>
     <textarea id="inne" rows="4"></textarea>
 
-    <!-- 🔹 DODANY TEKST -->
     <p class="info">
         Widzimy się na rekrutacji głosowej!<br>
         Jeżeli przyjmiemy cię, zgłoś się na ticket i dogadaj się kiedy taka rekrutacja będzie robiona!
     </p>
 
     <button type="submit">Wyślij odpowiedzi</button>
-
 </form>
 
 <script>
@@ -105,6 +102,7 @@ const apiURL = "https://gentle-night-cb86.tyxxnombodi.workers.dev/";
 document.getElementById("rekrutacjaForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
+    // Zbieranie wszystkich danych formularza
     const data = {
         nick: document.getElementById("nick").value,
         wiek: document.getElementById("wiek").value,
@@ -122,6 +120,7 @@ document.getElementById("rekrutacjaForm").addEventListener("submit", async funct
         inne: document.getElementById("inne").value
     };
 
+    // Wysłanie do Cloudflare Worker
     const res = await fetch(apiURL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -139,6 +138,8 @@ document.getElementById("rekrutacjaForm").addEventListener("submit", async funct
 
 </body>
 </html>
+
+
 
 
 
